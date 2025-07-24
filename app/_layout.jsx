@@ -1,15 +1,14 @@
 import { ClerkProvider } from "@clerk/clerk-expo";
 import { tokenCache } from "@clerk/clerk-expo/token-cache";
 import { Slot } from "expo-router";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { COLORS } from "../constants/colors";
 import Toast from "react-native-toast-message";
 import CustomToast from "@/components/CustomToast";
+import SafeScreen from "@/components/SafeScreen";
 
 export default function RootLayout() {
   return (
     <ClerkProvider tokenCache={tokenCache}>
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.background }}>
+      <SafeScreen>
         <Slot />
         <Toast
           config={{
@@ -17,7 +16,7 @@ export default function RootLayout() {
             customError: (props) => <CustomToast {...props} />,
           }}
         />
-      </SafeAreaView>
+      </SafeScreen>
     </ClerkProvider>
   );
 }
