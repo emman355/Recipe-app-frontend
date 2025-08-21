@@ -18,7 +18,6 @@ export const useFavoritesService = () => {
                 if (!response.ok) throw new Error("Failed to fetch favorites");
 
                 const favorites = await response.json();
-                console.log(favorites, "favorites")
 
                 // transform the data to match the RecipeCard component's expected format
                 const transformedFavorites = favorites.map((favorite) => ({
