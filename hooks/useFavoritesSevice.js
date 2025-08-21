@@ -2,7 +2,6 @@ import { useClerk, useUser } from '@clerk/clerk-expo';
 import { useEffect, useState } from 'react';
 import { API_URL } from '../constants/api';
 import Toast from "react-native-toast-message";
-import { Alert } from 'react-native';
 
 export const useFavoritesService = () => {
     const { signOut } = useClerk();
