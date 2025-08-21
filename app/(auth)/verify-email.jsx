@@ -40,6 +40,8 @@ const VerifyEmail = ({ email, onBack }) => {
         Toast.show({
           type: "customError",
           text1: "Verification failed. Please try again",
+          visibilityTime: 3000, // milliseconds before auto-dismiss (default is 4000)
+          position: "top",
         });
       }
     } catch (error) {
@@ -48,6 +50,8 @@ const VerifyEmail = ({ email, onBack }) => {
         text1:
           error?.errors?.[0]?.message ||
           "Verification failed. Please try again",
+        visibilityTime: 3000, // milliseconds before auto-dismiss (default is 4000)
+        position: "top",
       });
     } finally {
       setLoading(false);

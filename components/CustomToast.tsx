@@ -1,7 +1,9 @@
 // components/CustomToast.tsx
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import React from "react";
 import { COLORS } from "@/constants/colors";
+import { Ionicons } from "@expo/vector-icons";
+import Animated, { FadeInDown, FadeOutUp } from "react-native-reanimated";
 
 type Props = {
   text1?: string;
@@ -12,15 +14,23 @@ type Props = {
 
 export default function CustomToast({ text1, text2, type }: Props) {
   return (
-    <View
+    <Animated.View
+      entering={FadeInDown.duration(300)}
+      exiting={FadeOutUp.duration(200)}
       style={[
         styles.container,
-        type === "customError" && { borderLeftColor: "#de4a51ff" },
+        type === "customError" && styles.error,
+        type === "customSuccess" && styles.success,
       ]}
     >
       <Text style={styles.title}>{text1}</Text>
       {text2 && <Text style={styles.message}>{text2}</Text>}
-    </View>
+      {type === "customSuccess" ? (
+        <Ionicons name="checkmark-circle" size={24} color="#4ade80" />
+      ) : (
+        <Ionicons name="close-circle" size={24} color="#de4a51" />
+      )}
+    </Animated.View>
   );
 }
 
@@ -39,6 +49,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 4,
+    maxWidth: 600,
+    alignSelf: "center",
   },
   title: {
     fontWeight: "bold",
@@ -49,5 +61,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: COLORS.primary,
     marginTop: 4,
+  },
+  error: {
+    borderLeftColor: "#de4a51",
+  },
+  success: {
+    borderLeftColor: "#4ade80",
   },
 });

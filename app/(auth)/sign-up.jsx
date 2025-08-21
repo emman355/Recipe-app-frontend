@@ -33,11 +33,15 @@ const SignUp = () => {
       return Toast.show({
         type: "customError",
         text1: "Please fill in all fields!",
+        visibilityTime: 3000, // milliseconds before auto-dismiss (default is 4000)
+        position: "top",
       });
     if (password.length < 6)
       return Toast.show({
         type: "customError",
         text1: "Password must be atleast 6 characters!",
+        visibilityTime: 3000, // milliseconds before auto-dismiss (default is 4000)
+        position: "top",
       });
     if (!isLoaded) return;
 
@@ -59,6 +63,8 @@ const SignUp = () => {
       Toast.show({
         type: "customError",
         text1: error?.errors?.[0]?.message || "Failed to create account",
+        visibilityTime: 3000, // milliseconds before auto-dismiss (default is 4000)
+        position: "top",
       });
     } finally {
       setLoading(false);

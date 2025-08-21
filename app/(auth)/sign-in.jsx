@@ -32,6 +32,8 @@ const SignInScreen = () => {
       Toast.show({
         type: "customError",
         text1: "Please fill in all fields!",
+        visibilityTime: 3000, // milliseconds before auto-dismiss (default is 4000)
+        position: "top",
       });
       return;
     }
@@ -57,14 +59,16 @@ const SignInScreen = () => {
         Toast.show({
           type: "customError",
           text1: "Sign in failed. Please try again.",
+          visibilityTime: 3000, // milliseconds before auto-dismiss (default is 4000)
+          position: "top",
         });
       }
     } catch (error) {
-      // See https://clerk.com/docs/custom-flows/error-handling
-      // for more info on error handling
       Toast.show({
         type: "customError",
         text1: error.errors?.[0]?.message || "Sign in failed",
+        visibilityTime: 3000, // milliseconds before auto-dismiss (default is 4000)
+        position: "top",
       });
     } finally {
       setLoading((prev) => !prev);
@@ -81,7 +85,7 @@ const SignInScreen = () => {
         <ScrollView
           contentContainerStyle={authStyles.scrollContent}
           showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps='handled'
+          keyboardShouldPersistTaps="handled"
         >
           <View style={authStyles.imageContainer}>
             <Image
