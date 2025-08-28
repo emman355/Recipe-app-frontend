@@ -25,10 +25,9 @@ export default function LoadingLottie({ rawAnimationData }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background, // set theme color
-    justifyContent: "center", // vertically center
-    alignItems: "center", // horizontally center
-    zIndex: 999,
+    backgroundColor: COLORS.background,
+    justifyContent: "center",
+    alignItems: "center",
   },
   animationWrapper: {
     width: width * 0.5,
