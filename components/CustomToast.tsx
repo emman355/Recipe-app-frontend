@@ -1,7 +1,7 @@
 // components/CustomToast.tsx
 import { Text, StyleSheet } from "react-native";
 import React from "react";
-import { COLORS } from "@/constants/colors";
+import { COLORS } from "../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import Animated, { FadeInDown, FadeOutUp } from "react-native-reanimated";
 
