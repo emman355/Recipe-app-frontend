@@ -6,19 +6,23 @@ import CustomToast from "../components/CustomToast";
 import SafeScreen from "../components/SafeScreen";
 import { Provider } from "react-redux";
 import { store } from "../store";
+import "dotenv/config";
 
 export default function RootLayout() {
   return (
-    <ClerkProvider tokenCache={tokenCache}>
+    <ClerkProvider
+      tokenCache={tokenCache}
+      publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}
+    >
       <Provider store={store}>
         <SafeScreen>
           <Slot />
-            <Toast
-              config={{
-                customSuccess: (props) => <CustomToast {...props} />,
-                customError: (props) => <CustomToast {...props} />,
-              }}
-            />
+          <Toast
+            config={{
+              customSuccess: (props) => <CustomToast {...props} />,
+              customError: (props) => <CustomToast {...props} />,
+            }}
+          />
         </SafeScreen>
       </Provider>
     </ClerkProvider>
