@@ -13,7 +13,10 @@ export default {
     ios: {
       supportsTablet: true,
       bundleIdentifier: "com.earevalo355.recipefinder", // 👈 REQUIRED for iOS
-      icon: "./assets/images/i1.png"
+      icon: "./assets/images/i1.png",
+      infoPlist: {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     android: {
       adaptiveIcon: {
