@@ -12,6 +12,8 @@ export default {
     newArchEnabled: true,
     ios: {
       supportsTablet: true,
+      bundleIdentifier: "com.earevalo355.recipefinder", // 👈 REQUIRED for iOS
+      icon: "./assets/images/i1.png"
     },
     android: {
       adaptiveIcon: {
@@ -31,7 +33,7 @@ export default {
       [
         "expo-splash-screen",
         {
-          image: "./assets/images/splash-icon.png",
+          image: "./assets/images/i1.png",
           imageWidth: 200,
           resizeMode: "contain",
           backgroundColor: "#ffffff",
