@@ -8,14 +8,17 @@ import { Provider } from "react-redux";
 import { store } from "../store";
 import Constants from "expo-constants";
 
-const clerkPublishableKey = Constants.expoConfig.extra?.clerkPublishableKey;
+const clerkPublishableKey =
+  Constants.expoConfig.extra?.clerkPublishableKey ||
+  process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 export default function RootLayout() {
+  if (!clerkPublishableKey) {
+    throw new Error("Missing Clerk Publishable Key!");
+  }
+
   return (
-    <ClerkProvider
-      tokenCache={tokenCache}
-      publishableKey={clerkPublishableKey}
-    >
+    <ClerkProvider tokenCache={tokenCache} publishableKey={clerkPublishableKey}>
       <Provider store={store}>
         <SafeScreen>
           <Slot />
